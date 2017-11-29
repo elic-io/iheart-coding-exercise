@@ -1,5 +1,5 @@
 CREATE TABLE advertiser (
-    id INT PRIMARY KEY auto_increment,
+    id INT PRIMARY KEY auto_increment(1,1),
     name VARCHAR,
     contactName VARCHAR,
     creditLimit DECIMAL(20,2)

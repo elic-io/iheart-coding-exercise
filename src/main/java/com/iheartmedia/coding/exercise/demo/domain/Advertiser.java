@@ -17,6 +17,15 @@ public class Advertiser implements Serializable {
 	private String contactName;
 	
 	private BigDecimal creditLimit;
+	
+	public Advertiser() {}
+
+	public Advertiser(String name, String contactName, BigDecimal creditLimit) {
+		this.id = 0L;
+		this.name = name;
+		this.contactName = contactName;
+		this.creditLimit = creditLimit;
+	}
 
 	public Long getId() {
 		return this.id;
