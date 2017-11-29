@@ -11,7 +11,7 @@ import com.iheartmedia.coding.exercise.demo.domain.Advertiser;
 @Mapper
 public interface AdvertiserMapper {
 	
-	@Select("select * from advertiser where name like %#{name}%")
+	@Select("select * from advertiser where name = #{name}")
 	Advertiser findByName(@Param("name") String name);
 	
 }

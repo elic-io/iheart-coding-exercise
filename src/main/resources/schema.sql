@@ -4,3 +4,5 @@ CREATE TABLE advertiser (
     contactName VARCHAR,
     creditLimit DECIMAL(20,2)
 );
+
+insert into advertiser (name, contactName, creditLimit) values ('Super Soaker Inc.', 'Lonnie Johnson', 2000000.00);
