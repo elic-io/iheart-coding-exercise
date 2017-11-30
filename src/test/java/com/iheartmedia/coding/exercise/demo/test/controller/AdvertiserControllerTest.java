@@ -76,7 +76,7 @@ public class AdvertiserControllerTest {
 
     @Test
     public void advertiserNotFound() throws Exception {
-        mockMvc.perform(post("/advertisers/2345623")
+        mockMvc.perform(post("/api/advertisers/2345623")
                 .content(this.json(new Advertiser()))
                 .contentType(contentType))
                 .andExpect(status().isNotFound());
@@ -84,7 +84,7 @@ public class AdvertiserControllerTest {
 
     @Test
     public void readSingleAdvertiser() throws Exception {
-        mockMvc.perform(get("/advertisers/"
+        mockMvc.perform(get("/api/advertisers/"
                 + this.advertiser.getId()))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(contentType))
@@ -95,7 +95,7 @@ public class AdvertiserControllerTest {
 
     @Test
     public void readAdvertisers() throws Exception {
-        mockMvc.perform(get("/advertisers"))
+        mockMvc.perform(get("/api/advertisers"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(contentType))
                 .andExpect(jsonPath("$", hasSize(1)))
@@ -113,7 +113,7 @@ public class AdvertiserControllerTest {
         String advJson = json(new Advertiser(
                 "Mark","O Polo",new BigDecimal("50000.50")));
 
-        this.mockMvc.perform(post("/advertisers")
+        this.mockMvc.perform(post("/api/advertisers")
                 .contentType(contentType)
                 .content(advJson))
         		.andExpect(status().isOk())

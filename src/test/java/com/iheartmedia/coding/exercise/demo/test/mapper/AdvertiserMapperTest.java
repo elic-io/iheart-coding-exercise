@@ -24,6 +24,8 @@ public class AdvertiserMapperTest {
 
 	//TODO: some of these tests are not fully orthogonal - update and delete depend on create
 	
+	//TODO: possibility for arrant test failures due to parallel test run sequence with deleteAll truncation.  How to force ordering for some tests with JUnit?
+	
     @Autowired
     private AdvertiserMapper advertiserMapper;
 

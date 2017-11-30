@@ -35,7 +35,7 @@ public class AdvertiserController {
 	}	
 	
 	@RequestMapping(value = "/advertisers", method = RequestMethod.POST)
-    public ResponseEntity<Void> add(@RequestBody Advertiser adv) {
+    public ResponseEntity<Void> create(@RequestBody Advertiser adv) {
 		advertiserMapper.create(adv);
 	    return ResponseEntity.ok(null);
     }	
@@ -47,11 +47,17 @@ public class AdvertiserController {
 	    return ResponseEntity.ok(null);
     }	
 
-	/*
-	@RequestMapping(value = "/advertisers", method = RequestMethod.GET)
-    public ResponseEntity<List<Advertiser>>() {
-		advertiserMapper.create(adv);
-	    return ResponseEntity.ok(null);
+	@RequestMapping(value = "/advertisers/{id}", method = RequestMethod.GET)
+    public Advertiser read(@PathVariable long id) {
+		
+		
+	    return advertiserMapper.findById(id);
     }	
-	*/
+
+	
+	@RequestMapping(value = "/advertisers", method = RequestMethod.GET)
+    public List<Advertiser> readAll() {
+		return advertiserMapper.findAll();
+    }	
+	
 }
