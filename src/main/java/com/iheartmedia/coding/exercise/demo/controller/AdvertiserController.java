@@ -34,9 +34,16 @@ public class AdvertiserController {
 		this.advertiserMapper = advertiserMapper;
 	}	
 	
-	@RequestMapping(value = "/advertisers/{id}", method = RequestMethod.POST)
-    public ResponseEntity<Void> someOperation(@PathVariable long id, @RequestBody Advertiser adv) {
+	@RequestMapping(value = "/advertisers", method = RequestMethod.POST)
+    public ResponseEntity<Void> add(@RequestBody Advertiser adv) {
 		advertiserMapper.create(adv);
+	    return ResponseEntity.ok(null);
+    }	
+
+	@RequestMapping(value = "/advertisers/{id}", method = RequestMethod.PUT)
+    public ResponseEntity<Void> update(@PathVariable long id, @RequestBody Advertiser adv) {
+		adv.setId(id);
+		advertiserMapper.update(adv);
 	    return ResponseEntity.ok(null);
     }	
 

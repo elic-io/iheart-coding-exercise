@@ -1,4 +1,4 @@
-package com.iheartmedia.coding.exercise.demo;
+package com.iheartmedia.coding.exercise.demo.test;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

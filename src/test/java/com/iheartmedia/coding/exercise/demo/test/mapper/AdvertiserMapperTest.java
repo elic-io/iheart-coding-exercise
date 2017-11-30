@@ -1,15 +1,18 @@
-package com.iheartmedia.coding.exercise.demo.mapper;
+package com.iheartmedia.coding.exercise.demo.test.mapper;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mybatis.spring.boot.test.autoconfigure.MybatisTest;
 import com.iheartmedia.coding.exercise.demo.domain.Advertiser;
+import com.iheartmedia.coding.exercise.demo.mapper.AdvertiserMapper;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 import java.math.BigDecimal;
@@ -19,6 +22,8 @@ import java.util.List;
 @MybatisTest
 public class AdvertiserMapperTest {
 
+	//TODO: some of these tests are not fully orthogonal - update and delete depend on create
+	
     @Autowired
     private AdvertiserMapper advertiserMapper;
 
@@ -68,6 +73,22 @@ public class AdvertiserMapperTest {
         assertEquals("Héctor", newAdv.getName());
         assertEquals("Camacho", newAdv.getContactName());
         assertEquals(new BigDecimal("10.00"), newAdv.getCreditLimit());
+    }
+    
+    @Test
+    public void deleteAdvertiserTest() {
+        Advertiser adv = new Advertiser("Sugar", "Ray Leonard", new BigDecimal("10000000.00"));
+        advertiserMapper.create(adv);
+    	advertiserMapper.delete(adv.getId());
+    	Advertiser adv2 = advertiserMapper.findById(adv.getId());
+    	assertNull(adv2);
+    }
+    
+    @Test
+    public void deleteAllAdvertiserTest() {
+    	advertiserMapper.deleteAll();
+    	List<Advertiser> advertisers = advertiserMapper.findAll();
+    	assertTrue(advertisers.isEmpty());
     }
     
 }
