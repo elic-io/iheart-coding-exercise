@@ -38,8 +38,10 @@ public class AdvertiserMapperTest {
 
     @Test
     public void findByIdTest() {
-        Advertiser adv = advertiserMapper.findById(1L);
-        assertNotNull(adv);
+        Advertiser adv = new Advertiser("Marvel", "Stan Lee", new BigDecimal("100000000.00"));
+        advertiserMapper.create(adv);
+        Advertiser adv2 = advertiserMapper.findById(adv.getId());
+        assertNotNull(adv2);
     }
 
     @Test
